@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#080612">
+    <title>Google</title>
+   
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            background: radial-gradient(circle at 50% 0%, #35105c 0, transparent 35%), radial-gradient(circle at 0 100%, #101d55 0, transparent 35%), #080612;
+            -webkit-font-smoothing: antialiased
+        }
+
+        .page {
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            overflow: hidden
+        }
+
+        .card {
+            width: min(94vw, 430px);
+            height: min(96dvh, 750px);
+            min-height: 450px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 22px 20px 16px;
+            border: 1px solid rgba(255, 255, 255, .13);
+            border-radius: 28px;
+            background: radial-gradient(circle at 50% 0%, rgba(183, 40, 255, .15), transparent 32%), linear-gradient(160deg, rgba(24, 16, 40, .96), rgba(5, 7, 17, .98));
+            box-shadow: 0 18px 65px rgba(0, 0, 0, .58), inset 0 1px rgba(255, 255, 255, .06)
+        }
+
+        .card:before,
+        .card:after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            width: 180px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff27ca, transparent);
+            opacity: .65
+        }
+
+        .card:before {
+            top: 24px;
+            left: -65px;
+            transform: rotate(-35deg)
+        }
+
+        .card:after {
+            bottom: 38px;
+            right: -65px;
+            transform: rotate(-35deg)
+        }
+
+        .logo {
+            width: 94px;
+            height: 94px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 1;
+            border: 3px solid #ff36d2;
+            background: linear-gradient(145deg, #171128, #05040b);
+            box-shadow: 0 0 0 5px rgba(117, 63, 255, .22), 0 0 30px rgba(255, 38, 205, .35);
+            flex: none
+        }
+
+        .logo span {
+            font-size: 32px;
+            font-weight: 1000;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #fff, #ff32d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .name {
+            margin: 12px 0 0;
+            font-size: 20px;
+            line-height: 1;
+            font-weight: 1000;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #fff, #ff42d3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .verify {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #9dffcb;
+            font-size: 13px;
+            font-weight: 800
+        }
+
+        .check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #19c878;
+            color: #06120c;
+            font-size: 12px;
+            font-weight: 1000
+        }
+
+        .line {
+            width: 65px;
+            height: 3px;
+            border-radius: 4px;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #ff27c9, #765cff)
+        }
+
+        .title {
+            margin: 22px 0 0;
+            text-align: center;
+            font-size: 27px;
+            line-height: 1.05;
+            font-weight: 1000;
+            letter-spacing: .4px
+        }
+
+        .title span {
+            color: #ffd52a;
+            text-shadow: 0 0 15px rgba(255, 213, 42, .16)
+        }
+
+        .trusted {
+            width: 100%;
+            margin-top: 22px;
+            padding: 11px 10px;
+            text-align: center;
+            border: 1px solid rgba(46, 221, 151, .55);
+            border-radius: 15px;
+            background: rgba(20, 190, 116, .07);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900
+        }
+
+        .join {
+            width: 100%;
+            min-height: 59px;
+            margin-top: 30px;
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #18b8ff, #1765ef);
+            box-shadow: 0 11px 32px rgba(21, 113, 255, .32);
+            font-size: 20px;
+            font-weight: 1000;
+            letter-spacing: .4px;
+            transition: transform .12s ease;
+            -webkit-tap-highlight-color: transparent
+          
+        }
+
+
+        .join:active {
+            transform: scale(.97)
+        }
+
+        .tg {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #fff;
+            color: #1688f7;
+            font-size: 18px;
+            font-weight: 1000
+        }
+
+        .bottom {
+            margin-top: auto;
+            text-align: center;
+            color: rgba(255, 255, 255, .48);
+            font-size: 11px
+        }
+
+        @media(max-height:620px) {
+            .card {
+                padding: 10px 16px
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px
+            }
+
+            .logo span {
+                font-size: 25px
+            }
+
+            .name {
+                font-size: 25px;
+                margin-top: 6px
+            }
+
+            .verify {
+                margin-top: 4px
+            }
+
+            .line {
+                margin-top: 5px
+            }
+
+            .title {
+                font-size: 21px;
+                margin-top: 12px
+            }
+
+            .trusted {
+                margin-top: 12px;
+                padding: 7px
+            }
+
+            .join {
+                margin-top: 16px;
+                min-height: 48px
+            }
+        }
+
+        .logo img {
+	width: 90px;
+	border-radius: 90px;
+	margin: -8px -11px;
+}
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <section class="card">
+            <div class="logo"><img src="logo.jpg" alt="logo"></div>
+            <h1 class="name">GOOGLE PLAY </h1>
+            
+
+             <a class="join" href="https://www.whatsapp.com/channel/0029Vb9ifmC2f3EH7Qh3fX2O"
+                target="_blank" rel="noopener noreferrer"
+                onclick="if(typeof fbq==='function'){fbq('track','Subscribe');}">JOIN
+                COMMUNITY</a>
+
+            <h2 class="title">JOIN FREE COMMUNITY</h2>
+            <div class="trusted">⚡ Easy to Join Community</div>
+            <div class="trusted">🛡️ Latest Community Updates</div>
+            <div class="trusted">📲 Official Channel Updates</div>
+            <div class="trusted">🤝 24/7 Community Access</div>
+            <a class="join" href="https://www.whatsapp.com/channel/0029Vb9ifmC2f3EH7Qh3fX2O"
+                target="_blank" rel="noopener noreferrer"
+                onclick="if(typeof fbq==='function'){fbq('track','Subscribe');}">JOIN
+                COMMUNITY</a>
+        </section>
+    </main>
+</body>
+
+</html>
